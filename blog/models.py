@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Post(models.Model):
@@ -14,3 +15,7 @@ class Post(models.Model):
 	def __str__(self):
 		"""string representation of post model title"""
 		return self.title
+
+	def get_absolute_url(self):
+		"""absolute url to to post object"""
+		return reverse('post_detail', args=[str(self.id)])
